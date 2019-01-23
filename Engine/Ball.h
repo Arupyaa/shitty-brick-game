@@ -13,7 +13,7 @@ public:
 	void reboundx();
 	void reboundy();
 	RecF GetRec();
-private:
+public:
 	Vec2 pos;
 	Vec2 vel = { 100.0f,100.0f };
 	
