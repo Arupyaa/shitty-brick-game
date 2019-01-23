@@ -21,8 +21,9 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
+	paddle(Vec2(450.0f, 500.0f), Colors::Gray),
 	brick(RecF(Vec2(130.0f,240.0f),60.0f,30.0f),Colors::Cyan),
 	ball(Vec2(20.0f, 20.0f)),
 	walls(Vec2(0.0f,0.0f), int(gfx.ScreenWidth),int(gfx.ScreenHeight)),
@@ -45,7 +46,7 @@ void Game::UpdateModel()
 	ball.update(dt);
 	ball.Iscontained(walls);
 	brick.BallHitten(ball);
-
+	paddle.update(wnd.kbd);
 	
 }
 
@@ -53,5 +54,5 @@ void Game::ComposeFrame()
 {
 	brick.draw(gfx);
 	ball.Draw(gfx);
-
+	paddle.Draw(gfx);
 }
