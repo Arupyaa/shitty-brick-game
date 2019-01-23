@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Vec2.h"
 #include "RecF.h"
+#include "Brick.h"
 
 class Game
 {

@@ -35,7 +35,7 @@ RecF RecF::rec_center(Vec2 & center, float half_width, float half_height)
 	return RecF(center-Vec2(half_width,half_height), center + Vec2(half_width, half_height));
 }
 
-void RecF::Draw(Graphics& gfx,Color c) 
-{
-	gfx.DrawRect(int (left), int(top), int(right), int(bottom), c);
-}
+//void RecF::Draw(Graphics& gfx,Color c) 
+//{
+//	gfx.DrawRect(int (left), int(top), int(right), int(bottom), c);
+//}
