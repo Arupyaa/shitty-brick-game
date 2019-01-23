@@ -22,27 +22,27 @@ void Paddle::update(Keyboard & kbd)
 
 void Paddle::Draw(Graphics & gfx)
 {
-	if (!test) {
+	
 		gfx.DrawRect(pos.x, pos.y, pos.x + width, pos.y + height, color);
-	}
+	
 }
 
 void Paddle::BallBounced(Ball & ball)
 {
 	
-		if (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right && (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom)
-			&& pad.top < ball.GetRec().top&& pad.bottom>ball.GetRec().bottom)
+		if (ball.GetRec().right > pos.x && ball.GetRec().left < pos.x+width && (ball.GetRec().bottom > pos.y && ball.GetRec().top < pos.y+height)
+			&& pos.y < ball.GetRec().top&& pos.y + height>ball.GetRec().bottom)
 		{
 			ball.reboundx();
-			test = true;
+			
 			
 		}
 		
-		if (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom && (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right)
-			&& ball.GetRec().left>pad.left&&ball.GetRec().right < pad.right)
+		if (ball.GetRec().bottom > pos.y && ball.GetRec().top < pos.y + height && (ball.GetRec().right > pos.x && ball.GetRec().left < pos.x + width)
+			&& ball.GetRec().left>pos.x&&ball.GetRec().right < pos.x + width)
 		{
 			ball.reboundy();
-			test = true;
+			
 			
 		}
 		
