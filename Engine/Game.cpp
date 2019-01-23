@@ -24,6 +24,7 @@
 Game::Game( MainWindow& wnd )
 	:
 	ball(Vec2(30.0f, 50.0f)),
+	walls(Vec2(0.0f,0.0f), int(gfx.ScreenWidth),int(gfx.ScreenHeight)),
 	wnd( wnd ),
 	gfx( wnd )
 {
@@ -41,6 +42,8 @@ void Game::UpdateModel()
 {
 	float dt = ft.Mark();
 	ball.update(dt);
+	ball.Iscontained(walls);
+
 	
 }
 
