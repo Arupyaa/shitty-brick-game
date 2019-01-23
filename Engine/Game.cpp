@@ -23,7 +23,7 @@
 
 Game::Game( MainWindow& wnd )
 	:
-	brick(RecF(Vec2(230.0f,240.0f),30.0f,50.0f),Colors::Cyan),
+	brick(RecF(Vec2(330.0f,440.0f),30.0f,50.0f),Colors::Cyan),
 	ball(Vec2(20.0f, 20.0f)),
 	walls(Vec2(0.0f,0.0f), int(gfx.ScreenWidth),int(gfx.ScreenHeight)),
 	wnd( wnd ),

@@ -10,30 +10,32 @@ void Brick::BallHitten(Ball & ball)
 {
 	if (!smashed)
 	{
-		if (ball.GetRec().right > rec.left && (ball.GetRec().bottom > rec.top && ball.GetRec().top < rec.bottom))
+		if (ball.GetRec().right > rec.left && ball.GetRec().left < rec.right && (ball.GetRec().bottom > rec.top && ball.GetRec().top < rec.bottom)
+			&& rec.top < ball.GetRec().top&& rec.bottom>ball.GetRec().bottom)
 		{
 			ball.reboundx();
 			//ball.pos.x -= ball.GetRec().right - rec.right;
 			smashed = true;
 		}
-		else if (ball.GetRec().left < rec.right && (ball.GetRec().bottom > rec.top && ball.GetRec().top < rec.bottom))
-		{
-			ball.reboundx();
-			//ball.pos.x += rec.left - ball.GetRec().left;
-			smashed = true;
-		}
-		if (ball.GetRec().bottom > rec.top && (ball.GetRec().right > rec.left && ball.GetRec().left < rec.right))
+		//else if (ball.GetRec().left < rec.right && (ball.GetRec().bottom > rec.top && ball.GetRec().top < rec.bottom))
+		//{
+		//	ball.reboundx();
+		//	//ball.pos.x += rec.left - ball.GetRec().left;
+		//	smashed = true;
+		//}
+		if (ball.GetRec().bottom > rec.top && ball.GetRec().top < rec.bottom && (ball.GetRec().right > rec.left && ball.GetRec().left < rec.right)
+			&&ball.GetRec().left>rec.left&&ball.GetRec().right<rec.right)
 		{
 			ball.reboundy();
 			//ball.pos.y -= ball.GetRec().bottom - rec.bottom;
 			smashed = true;
 		}
-		else if (ball.GetRec().top < rec.bottom && (ball.GetRec().right > rec.left && ball.GetRec().left < rec.right))
-		{
-			ball.reboundy();
-			//ball.pos.y += rec.top - ball.GetRec().top;
-			smashed = true;
-		}
+		//else if (ball.GetRec().top < rec.bottom && (ball.GetRec().right > rec.left && ball.GetRec().left < rec.right))
+		//{
+		//	ball.reboundy();
+		//	//ball.pos.y += rec.top - ball.GetRec().top;
+		//	smashed = true;
+		//}
 	}
 }
 
