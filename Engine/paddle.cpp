@@ -2,8 +2,10 @@
 
 Paddle::Paddle(Vec2 & in_pos, Color  c)
 	: pos(in_pos),
-	color(c)
+	color(c),
+	pad( pos,width,height)
 {
+	
 }
 
 void Paddle::update(Keyboard & kbd)
@@ -20,5 +22,28 @@ void Paddle::update(Keyboard & kbd)
 
 void Paddle::Draw(Graphics & gfx)
 {
-	gfx.DrawRect(pos.x, pos.y, pos.x + width, pos.y + height, color);
+	if (!test) {
+		gfx.DrawRect(pos.x, pos.y, pos.x + width, pos.y + height, color);
+	}
+}
+
+void Paddle::BallBounced(Ball & ball)
+{
+	
+		if (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right && (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom)
+			&& pad.top < ball.GetRec().top&& pad.bottom>ball.GetRec().bottom)
+		{
+			ball.reboundx();
+			test = true;
+			
+		}
+		
+		if (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom && (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right)
+			&& ball.GetRec().left>pad.left&&ball.GetRec().right < pad.right)
+		{
+			ball.reboundy();
+			test = true;
+			
+		}
+		
 }
