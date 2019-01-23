@@ -1,15 +1,14 @@
 #include "paddle.h"
 
-Paddle::Paddle(Vec2 & in_pos, Color  c)
+Paddle::Paddle(Vec2& in_pos, Color c)
 	: pos(in_pos),
-	color(c),
-	pad( pos,width,height)
+	color(c)
 {
-	
 }
 
 void Paddle::update(Keyboard & kbd)
 {
+	
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
 		pos += vel;
@@ -22,28 +21,37 @@ void Paddle::update(Keyboard & kbd)
 
 void Paddle::Draw(Graphics & gfx)
 {
-	if (!test) {
-		gfx.DrawRect(pos.x, pos.y, pos.x + width, pos.y + height, color);
-	}
+	gfx.DrawRect(pad.left, pad.top, pad.right, pad.bottom, color);
 }
 
-void Paddle::BallBounced(Ball & ball)
+void Paddle::BallBounced(Ball& ball)
 {
 	
-		if (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right && (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom)
-			&& pad.top < ball.GetRec().top&& pad.bottom>ball.GetRec().bottom)
+		if (ball.GetRec().right >pad.left && ball.GetRec().left <pad.right && ball.GetRec().bottom >pad.top && ball.GetRec().top <pad.bottom
+			&&pad.top < ball.GetRec().top&&pad.bottom>ball.GetRec().bottom)
 		{
 			ball.reboundx();
-			test = true;
+			
 			
 		}
-		
-		if (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom && (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right)
-			&& ball.GetRec().left>pad.left&&ball.GetRec().right < pad.right)
+		//else if (ball.GetRec().left < rec.right && (ball.GetRec().bottom > rec.top && ball.GetRec().top < rec.bottom))
+		//{
+		//	ball.reboundx();
+		//	//ball.pos.x += rec.left - ball.GetRec().left;
+		//	smashed = true;
+		//}
+		if (ball.GetRec().bottom >pad.top && ball.GetRec().top <pad.bottom &&ball.GetRec().right >pad.left && ball.GetRec().left <pad.right
+			&& ball.GetRec().left>pad.left&&ball.GetRec().right <pad.right)
 		{
 			ball.reboundy();
-			test = true;
+			
 			
 		}
-		
+		//else if (ball.GetRec().top < rec.bottom && (ball.GetRec().right > rec.left && ball.GetRec().left < rec.right))
+		//{
+		//	ball.reboundy();
+		//	//ball.pos.y += rec.top - ball.GetRec().top;
+		//	smashed = true;
+		//}
+	
 }
