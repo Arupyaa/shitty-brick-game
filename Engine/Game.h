@@ -26,6 +26,8 @@
 #include "Vec2.h"
 #include "RecF.h"
 #include "Brick.h"
+#include "ball.h"
+#include "FrameTimer.h"
 
 class Game
 {
@@ -46,4 +48,6 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	Ball ball;
+	FrameTimer ft;
 };
