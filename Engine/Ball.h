@@ -9,11 +9,13 @@ public:
 	void Draw(Graphics& gfx) const;
 	void update(float dt);
 	void Iscontained(RecF& walls);
+	
 	void reboundx();
 	void reboundy();
+	RecF GetRec();
 private:
 	Vec2 pos;
 	Vec2 vel = { 100.0f,100.0f };
-	RecF GetRec();
+	
 	const float radius = 7.0f;
 };

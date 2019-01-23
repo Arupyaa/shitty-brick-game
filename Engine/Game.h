@@ -50,5 +50,6 @@ private:
 	/********************************/
 	Ball ball;
 	RecF walls;
+	Brick brick;
 	FrameTimer ft;
 };

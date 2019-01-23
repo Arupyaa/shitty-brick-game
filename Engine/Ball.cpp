@@ -39,6 +39,8 @@ void Ball::Iscontained(RecF & walls)
 	}
 }
 
+
+
 void Ball::reboundx()
 {
 	vel.x = -vel.x;
