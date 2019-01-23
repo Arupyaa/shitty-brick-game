@@ -48,7 +48,7 @@ void Game::UpdateModel()
 	ball.Iscontained(walls);
 	brick.BallHitten(ball);
 	paddle.update(wnd.kbd);
-	paddle.BallBounced(ball);
+	
 	
 }
 

@@ -14,7 +14,7 @@ private:
 	Vec2 vel = { 5.0f,0.0f };
 	const float width = 50.0f;
 	const float height = 25.0f;
-	RecF pad = {pos, width,height};
+	RecF pad ;
 	Color color;
 	bool test = false;
 };
