@@ -8,7 +8,7 @@ public:
 	Paddle(Vec2& in_pos,Color c);
 	void update(Keyboard& kbd);
 	void Draw(Graphics& gfx);
-	void BallBounced(Ball& ball);
+	void BallBounced(Ball& ball, Keyboard & kbd);
 private:
 	Vec2 pos;
 	Vec2 vel = { 5.0f,0.0f };
@@ -16,5 +16,6 @@ private:
 	const float height = 25.0f;
 	RecF pad = { pos,width,height };
 	Color color;
+	bool stop_spam = false;
 	
 };

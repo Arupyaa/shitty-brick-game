@@ -43,7 +43,7 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	float dt = ft.Mark();
-	paddle.BallBounced(ball);
+	paddle.BallBounced(ball,wnd.kbd);
 	ball.update(dt);
 	ball.Iscontained(walls);
 	brick.BallHitten(ball);

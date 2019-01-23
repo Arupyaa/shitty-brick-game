@@ -10,14 +10,18 @@ Paddle::Paddle(Vec2 & in_pos, Color  c)
 
 void Paddle::update(Keyboard & kbd)
 {
-	if (kbd.KeyIsPressed(VK_RIGHT))
+	if (!stop_spam)
 	{
-		pos += vel;
+		if (kbd.KeyIsPressed(VK_RIGHT))
+		{
+			pos += vel;
+		}
+		if (kbd.KeyIsPressed(VK_LEFT))
+		{
+			pos -= vel;
+		}
 	}
-	if (kbd.KeyIsPressed(VK_LEFT))
-	{
-		pos -= vel;
-	}
+	stop_spam = false;
 }
 
 void Paddle::Draw(Graphics & gfx)
@@ -27,7 +31,7 @@ void Paddle::Draw(Graphics & gfx)
 	
 }
 
-void Paddle::BallBounced(Ball & ball)
+void Paddle::BallBounced(Ball & ball, Keyboard & kbd)
 {
 	
 		if (ball.GetRec().right > pos.x && ball.GetRec().left < pos.x+width && (ball.GetRec().bottom > pos.y && ball.GetRec().top < pos.y+height)
@@ -36,19 +40,19 @@ void Paddle::BallBounced(Ball & ball)
 			if (pos.x > ball.GetRec().left)
 			{
 				ball.pos.x -= ball.GetRec().right - pos.x;
-				if (vel.x != 0.0f)
+				if (kbd.KeyIsPressed(VK_LEFT))
 				{
-					pos.x+ vel.x;
 					ball.pos.x -= vel.x;
+					stop_spam = true;
 				}
 			}
 			else if (ball.GetRec().right > pos.x +width)
 			{
 				ball.pos.x += pos.x + width - ball.GetRec().left;
-				if (vel.x != 0.0f)
+				if (kbd.KeyIsPressed(VK_RIGHT))
 				{
-					pos.x - vel.x;
 					ball.pos.x += vel.x;
+					stop_spam = true;
 				}
 			}
 			
