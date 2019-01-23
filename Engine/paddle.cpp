@@ -33,7 +33,22 @@ void Paddle::BallBounced(Ball & ball)
 		if (ball.GetRec().right > pos.x && ball.GetRec().left < pos.x+width && (ball.GetRec().bottom > pos.y && ball.GetRec().top < pos.y+height)
 			&& pos.y < ball.GetRec().top&& pos.y + height>ball.GetRec().bottom)
 		{
-			
+			if (pos.x > ball.GetRec().left)
+			{
+				ball.pos.x -= ball.GetRec().right - pos.x;
+				if (vel.x != 0.0f)
+				{
+					ball.pos.x -= vel.x*3;
+				}
+			}
+			else if (ball.GetRec().right > pos.x +width)
+			{
+				ball.pos.x += pos.x + width - ball.GetRec().left;
+			}
+			if (vel.x != 0.0f)
+			{
+				ball.pos.x += vel.x*3;
+			}
 			ball.reboundx();
 			
 			
