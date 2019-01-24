@@ -54,9 +54,10 @@ private:
 	RecF walls;
 	
 	FrameTimer ft;
-	static const int brick_num = 12;
+	
 	static const int brick_row_num = 3;
-	static const int brick_coloumn_num = 4;
+	static const int brick_coloumn_num = 24;
+	static constexpr int brick_num = brick_coloumn_num * brick_row_num;
 	static constexpr float brick_width = 150.0f;
 	static constexpr float brick_height = 50.0f;
 	Brick bricks[brick_num];
