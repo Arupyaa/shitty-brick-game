@@ -5,6 +5,7 @@
 class Brick
 {
 public:
+	Brick() = default;
 	Brick(RecF& in_rec,Color c);
 	void BallHitten(Ball& ball);
 	void draw(Graphics& gfx);

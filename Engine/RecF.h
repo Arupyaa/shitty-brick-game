@@ -4,6 +4,7 @@
 
 class RecF {
 public:
+	RecF() = default;
 	RecF(float in_top, float in_bottom, float in_left, float in_right);
 	RecF(Vec2& top_left, float width, float height);
 	RecF(Vec2& top_left, Vec2& bottom_right);
