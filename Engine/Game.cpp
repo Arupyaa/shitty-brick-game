@@ -36,7 +36,7 @@ Game::Game(MainWindow& wnd)
 	{
 		for (int y = 0; y < brick_row_num; ++y)
 		{
-			bricks[i] = Brick( RecF(Vec2(20.0f+(20.0f*x),20.0f+(20.0f*y)),brick_width,brick_height),Colors::Cyan);
+			bricks[i] = Brick( RecF(Vec2(20.0f+(50.0f*x),20.0f+(30.0f*y)),brick_width,brick_height),Colors::Cyan);
 				++i;
 		}
 	}
