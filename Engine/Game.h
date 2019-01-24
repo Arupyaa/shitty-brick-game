@@ -56,7 +56,7 @@ private:
 	FrameTimer ft;
 	
 	static const int brick_row_num = 3;
-	static const int brick_coloumn_num = 4;
+	static const int brick_coloumn_num = 14;
 	static constexpr int brick_num = brick_coloumn_num * brick_row_num;
 	static constexpr float brick_width = 50.0f;
 	static constexpr float brick_height = 30.0f;
