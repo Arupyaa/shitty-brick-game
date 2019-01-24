@@ -34,6 +34,17 @@ void Paddle::Draw(Graphics & gfx)
 void Paddle::BallBounced(Ball & ball, Keyboard & kbd)
 {
 	
+		if (
+			Vec2(ball.GetRec().left, ball.GetRec().top) == Vec2(pos.x + width, pos.y + height) ||
+			Vec2(ball.GetRec().right, ball.GetRec().top) == Vec2(pos.x, pos.y + height) ||
+			Vec2(ball.GetRec().right, ball.GetRec().bottom) == Vec2(pos.x, pos.y) ||
+			Vec2(ball.GetRec().left, ball.GetRec().bottom) == Vec2(pos.x + width, pos.y)
+			)
+		{
+			ball.reboundx();
+			ball.reboundy();
+		}
+
 		if (ball.GetRec().right > pos.x && ball.GetRec().left < pos.x+width && (ball.GetRec().bottom > pos.y && ball.GetRec().top < pos.y+height)
 			&& pos.y < ball.GetRec().top&& pos.y + height>ball.GetRec().bottom)
 		{
