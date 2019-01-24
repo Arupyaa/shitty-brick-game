@@ -52,6 +52,13 @@ private:
 	Paddle paddle;
 	Ball ball;
 	RecF walls;
-	Brick brick;
+	
 	FrameTimer ft;
+	static const int brick_num = 12;
+	static const int brick_row_num = 3;
+	static const int brick_coloumn_num = 4;
+	static constexpr float brick_width = 150.0f;
+	static constexpr float brick_height = 50.0f;
+	Brick bricks[brick_num];
+	bool do_once = false;
 };
