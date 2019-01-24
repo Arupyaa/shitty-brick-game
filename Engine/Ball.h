@@ -15,7 +15,7 @@ public:
 	RecF GetRec();
 public:
 	Vec2 pos;
-	Vec2 vel = { 100.0f,100.0f };
+	Vec2 vel = { 200.0f,200.0f };
 	
 	const float radius = 7.0f;
 };
