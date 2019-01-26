@@ -2,8 +2,8 @@
 
 Paddle::Paddle(Vec2 & in_pos, Color  c)
 	: pos(in_pos),
-	color(c),
-	pad( pos,width,height)
+	color(c)
+	
 {
 	
 }
@@ -22,6 +22,7 @@ void Paddle::update(Keyboard & kbd)
 		}
 	}
 	stop_spam = false;
+	pad = RecF(pos, width, height);
 }
 
 void Paddle::Draw(Graphics & gfx)
@@ -45,21 +46,21 @@ void Paddle::BallBounced(Ball & ball, Keyboard & kbd)
 			ball.reboundy();
 		}
 
-		if (ball.GetRec().right > pos.x && ball.GetRec().left < pos.x+width && (ball.GetRec().bottom > pos.y && ball.GetRec().top < pos.y+height)
-			&& pos.y < ball.GetRec().top&& pos.y + height>ball.GetRec().bottom)
+		if (ball.GetRec().right > pad.left && ball.GetRec().left < pad.right && (ball.GetRec().bottom > pad.top && ball.GetRec().top < pad.bottom)
+			&& pad.top < ball.GetRec().top&& pad.bottom>ball.GetRec().bottom)
 		{
-			if (pos.x > ball.GetRec().left)
+			if (pad.left > ball.GetRec().left)
 			{
-				ball.pos.x -= ball.GetRec().right - pos.x;
+				ball.pos.x -= ball.GetRec().right - pad.left;
 				if (kbd.KeyIsPressed(VK_LEFT))
 				{
 					ball.pos.x -= vel.x;
 					stop_spam = true;
 				}
 			}
-			else if (ball.GetRec().right > pos.x +width)
+			else if (ball.GetRec().right > pad.right)
 			{
-				ball.pos.x += pos.x + width - ball.GetRec().left;
+				ball.pos.x +=  pad.right - ball.GetRec().left;
 				if (kbd.KeyIsPressed(VK_RIGHT))
 				{
 					ball.pos.x += vel.x;
@@ -88,4 +89,18 @@ void Paddle::BallBounced(Ball & ball, Keyboard & kbd)
 			
 		}
 		
+}
+
+void Paddle::Iscontained(RecF & walls)
+{
+	if (pad.right > walls.right)
+	{
+		
+		pos.x += pad.right - walls.right;
+	}
+	else if (pad.left < walls.left)
+	{
+		
+		pos.x -= walls.left - pad.left;
+	}
 }

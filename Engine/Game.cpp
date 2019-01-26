@@ -58,6 +58,7 @@ void Game::UpdateModel()
 	paddle.BallBounced(ball,wnd.kbd);
 	ball.update(dt);
 	ball.Iscontained(walls);
+	paddle.Iscontained(walls);
 
 	for (int i = 0; i < brick_num; ++i)
 	{
